@@ -1,0 +1,39 @@
+services: # Listamos los actores que intervienen
+  # --- Contenedor 1: La Base de Datos (PostgreSQL) ---
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: usuario_portfolio
+      POSTGRES_PASSWORD: password_secreto
+      POSTGRES_DB: base_datos_opiniones
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # --- Contenedor 2: Tu Script ETL (Python) ---
+  etl_app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://usuario_portfolio:password_secreto@db:5432/base_datos_opiniones
+      PYTHONUNBUFFERED: 1 # Lo empleo para ver logs
+    # Este contenedor ejecuta el main.py (ETL) por defecto
+
+  # --- Contenedor 3: Dashboard (Streamlit) ---
+  dashboard:
+    build: . # Se usa el mismo Dockerfile
+    command: streamlit run src/dashboard.py --server.port 8501 --server.address 0.0.0.0
+    depends_on:
+      - db
+    ports:
+      - "8501:8501" # Abro el puerto web
+    environment:
+      DATABASE_URL: postgresql://usuario_portfolio:password_secreto@db:5432/base_datos_opiniones
+    volumes:
+      - ./src:/app/src # Esto permite que el codigo se actualice sin reiniciar
+
+volumes:
+  postgres_data:
