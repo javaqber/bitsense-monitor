@@ -1,4 +1,4 @@
-# 🪙 Crypto Sentiment & Price Monitor (ETL + Docker)
+# 🪙 Monitor de Sentimiento y Precio de Bitcoin (ETL + Docker)
 
 Este proyecto es un sistema de **Ingeniería de Datos end-to-end** que monitoriza el precio de Bitcoin en tiempo real, simula opiniones de mercado (sentimiento) y visualiza los datos en un Dashboard interactivo.
 
