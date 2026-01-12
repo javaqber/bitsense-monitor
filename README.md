@@ -37,7 +37,7 @@ El sistema consta de 3 microservicios orquestados con Docker Compose:
 1.  Clonar el repositorio:
 
     ```bash
-    git clone https://github.com/javaqber/bitcoin-sentiment-etl-docker.git
+    git clone https://github.com/javaqber/bitsense-monitor.git
     cd portfolio-etl-crypto
     ```
 
