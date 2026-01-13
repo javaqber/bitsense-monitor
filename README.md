@@ -4,6 +4,8 @@ Este proyecto es un sistema de **Ingeniería de Datos end-to-end** que monitoriz
 
 Todo el entorno está contenerizado con **Docker**, asegurando que funcione en cualquier máquina con un solo comando.
 
+![bitcoinDemo2](https://github.com/user-attachments/assets/28ccf0c5-3550-4d63-abaf-70a7d218805e)
+
 ## 🏗️ Arquitectura
 
 El sistema consta de 3 microservicios orquestados con Docker Compose:
